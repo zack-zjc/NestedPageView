@@ -794,7 +794,7 @@ class _PageViewState extends State<NestedPageView> {
   ///add to user PrimaryCustomPageController
   CustomPageController _controller;
 
-  NestedPageViewCoordinator _coordinator;
+  NestedPageViewCoordinator _coordinator = NestedPageViewCoordinator();
 
   @override
   void initState() {
@@ -818,7 +818,7 @@ class _PageViewState extends State<NestedPageView> {
   @override
   Widget build(BuildContext context) {
     var primaryCoordinator = PrimaryPageControllerCoordinator.of(context);
-    _coordinator = widget.coordinator??primaryCoordinator??NestedPageViewCoordinator();
+    _coordinator = widget.coordinator??primaryCoordinator??_coordinator;
     if (primaryCoordinator != null){
       ///是内部的pageView
       _controller = primaryCoordinator.newChildPageController();
